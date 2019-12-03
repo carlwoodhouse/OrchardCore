@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using GraphQL.Types;
+using HotChocolate;
 
 namespace OrchardCore.Apis.GraphQL
 {

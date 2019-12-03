@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using GraphQL.Types;
+using HotChocolate;
 using Microsoft.Extensions.Primitives;
 
 namespace OrchardCore.Apis.GraphQL
@@ -15,6 +15,6 @@ namespace OrchardCore.Apis.GraphQL
         /// <param name="schema">The <see cref="ISchema"/> instance to update.</param>
         /// <returns>A <see cref="IChangeToken"/> instance that is invalidated when the data that is used in the <see cref="ISchema"/> 
         /// instance has changed, or <c>null</c> if it has no dependencies.</returns>
-        Task<IChangeToken> BuildAsync(ISchema schema);
+        Task<IChangeToken> BuildAsync(HotChocolate.ISchemaBuilder schema);
     }
 }

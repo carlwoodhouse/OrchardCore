@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using GraphQL.Types;
+using HotChocolate;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
@@ -36,7 +36,7 @@ namespace OrchardCore.ContentManagement.GraphQL.Queries
             S = localizer;
         }
 
-        public Task<IChangeToken> BuildAsync(ISchema schema)
+        public Task<IChangeToken> BuildAsync(HotChocolate.ISchemaBuilder schema)
         {
             var serviceProvider = _httpContextAccessor.HttpContext.RequestServices;
 
@@ -47,11 +47,8 @@ namespace OrchardCore.ContentManagement.GraphQL.Queries
 
             foreach (var typeDefinition in contentDefinitionManager.ListTypeDefinitions())
             {
-                var typeType = new ContentItemType(_contentOptionsAccessor)
-                {
-                    Name = typeDefinition.Name,
-                    Description = S["Represents a {0}.", typeDefinition.DisplayName]
-                };
+                var typeType = new ContentItemType(_contentOptionsAccessor, typeDefinition.Name, S["Represents a {0}.", typeDefinition.DisplayName]);
+                schema.AddType(typeType).AddResolver;
 
                 var query = new ContentItemsFieldType(typeDefinition.Name, schema, _contentOptionsAccessor, _settingsAccessor)
                 {

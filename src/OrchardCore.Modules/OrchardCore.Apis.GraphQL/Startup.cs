@@ -14,6 +14,8 @@ using OrchardCore.Environment.Shell.Configuration;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using OrchardCore.Security.Permissions;
+using HotChocolate.AspNetCore;
+using HotChocolate;
 
 namespace OrchardCore.Apis.GraphQL
 {
@@ -28,14 +30,17 @@ namespace OrchardCore.Apis.GraphQL
 
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IDependencyResolver, RequestServicesDependencyResolver>();
-            services.AddSingleton<IDocumentExecuter, SerialDocumentExecuter>();
-            services.AddSingleton<IDocumentWriter, DocumentWriter>();
-            services.AddSingleton<ISchemaFactory, SchemaService>();
-            services.AddScoped<IValidationRule, MaxNumberOfResultsValidationRule>();
+            //services.AddSingleton<IDependencyResolver, RequestServicesDependencyResolver>();
+            //services.AddSingleton<IDocumentExecuter, SerialDocumentExecuter>();
+            //services.AddSingleton<IDocumentWriter, DocumentWriter>();
+            //services.AddSingleton<ISchemaFactory, SchemaService>();
+            //services.AddScoped<IValidationRule, MaxNumberOfResultsValidationRule>();
 
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddTransient<INavigationProvider, AdminMenu>();
+
+
+            services.AddGraphQL();
 
             services.AddOptions<GraphQLSettings>().Configure<IShellConfiguration>((c, configuration) =>
             {
