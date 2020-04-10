@@ -1,16 +1,16 @@
-using GraphQL.Types;
-using OrchardCore.Flows.Models;
+//using GraphQL.Types;
+//using OrchardCore.Flows.Models;
 
-namespace OrchardCore.Flows.GraphQL
-{
-    public class FlowMetadataQueryObjectType : ObjectGraphType<FlowMetadata>
-    {
-        public FlowMetadataQueryObjectType()
-        {
-            Name = "FlowMetadata";
+//namespace OrchardCore.Flows.GraphQL
+//{
+//    public class FlowMetadataQueryObjectType : ObjectGraphType<FlowMetadata>
+//    {
+//        public FlowMetadataQueryObjectType()
+//        {
+//            Name = "FlowMetadata";
 
-            Field(x => x.Size, nullable: true);
-            Field<FlowAlignmentEnum>("alignment");
-        }
-    }
-}
+//            Field(x => x.Size, nullable: true);
+//            Field<FlowAlignmentEnum>("alignment");
+//        }
+//    }
+//}

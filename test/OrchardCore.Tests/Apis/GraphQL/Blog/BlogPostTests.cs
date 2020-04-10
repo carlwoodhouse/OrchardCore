@@ -247,29 +247,29 @@ namespace OrchardCore.Tests.Apis.GraphQL
             }
         }
 
-        [Fact]
-        public async Task ShouldNotReturnBlogsWithoutViewBlogContentPermission()
-        {
-            var permissionContext = new PermissionsContext
-            {
-                UsePermissionsContext = true,
-                AuthorizedPermissions = new[] {
-                    GraphQLApi.Permissions.ExecuteGraphQL
-                }
-            };
+        //[Fact]
+        //public async Task ShouldNotReturnBlogsWithoutViewBlogContentPermission()
+        //{
+        //    var permissionContext = new PermissionsContext
+        //    {
+        //        UsePermissionsContext = true,
+        //        AuthorizedPermissions = new[] {
+        //            GraphQLApi.Permissions.ExecuteGraphQL
+        //        }
+        //    };
 
-            using (var context = new SiteContext())
-            {
-                await context.InitializeAsync(permissionContext);
+        //    using (var context = new SiteContext())
+        //    {
+        //        await context.InitializeAsync(permissionContext);
 
-                var result = await context.GraphQLClient.Content
-                    .Query("blog", builder =>
-                    {
-                        builder.WithField("contentItemId");
-                    });
+        //        var result = await context.GraphQLClient.Content
+        //            .Query("blog", builder =>
+        //            {
+        //                builder.WithField("contentItemId");
+        //            });
 
-                Assert.Equal(GraphQLApi.ValidationRules.RequiresPermissionValidationRule.ErrorCode, result["errors"][0]["extensions"]["code"]);
-            }
-        }
+        //        Assert.Equal(GraphQLApi.ValidationRules.RequiresPermissionValidationRule.ErrorCode, result["errors"][0]["extensions"]["code"]);
+        //    }
+        //}
     }
 }

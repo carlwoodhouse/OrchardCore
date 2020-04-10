@@ -60,13 +60,13 @@ namespace OrchardCore.Autoroute
 
             services.AddScoped<ILiquidTemplateEventHandler, ContentAutorouteLiquidTemplateEventHandler>();
 
-            services.Configure<GraphQLContentOptions>(options =>
-            {
-                options.ConfigurePart<AutoroutePart>(partOptions =>
-                {
-                    partOptions.Collapse = true;
-                });
-            });
+            //services.Configure<GraphQLContentOptions>(options =>
+            //{
+            //    options.ConfigurePart<AutoroutePart>(partOptions =>
+            //    {
+            //        partOptions.Collapse = true;
+            //    });
+            //});
 
             services.AddSingleton<AutoRouteTransformer>();
             services.AddSingleton<IShellRouteValuesAddressScheme, AutoRouteValuesAddressScheme>();

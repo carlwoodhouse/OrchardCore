@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" />
+    <PackageReference Include="HotChocolate.Types" Version="10.4.1" />
   </ItemGroup>
 
   <ItemGroup>

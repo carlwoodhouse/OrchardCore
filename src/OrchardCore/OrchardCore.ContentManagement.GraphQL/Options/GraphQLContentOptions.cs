@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GraphQL.Types;
+//using GraphQL.Types;
 using OrchardCore.ContentManagement.GraphQL.Settings;
 using OrchardCore.ContentManagement.Metadata.Models;
 
@@ -15,60 +15,60 @@ namespace OrchardCore.ContentManagement.GraphQL.Options
         public IEnumerable<GraphQLContentPartOption> PartOptions { get; set; }
             = Enumerable.Empty<GraphQLContentPartOption>();
 
-        public IEnumerable<GraphQLField> HiddenFields { get; set; }
-            = Enumerable.Empty<GraphQLField>();
+        //        public IEnumerable<GraphQLField> HiddenFields { get; set; }
+        //            = Enumerable.Empty<GraphQLField>();
 
-        public GraphQLContentOptions ConfigureContentType(string contentType, Action<GraphQLContentTypeOption> action)
-        {
-            var option = new GraphQLContentTypeOption(contentType);
+        //        public GraphQLContentOptions ConfigureContentType(string contentType, Action<GraphQLContentTypeOption> action)
+        //        {
+        //            var option = new GraphQLContentTypeOption(contentType);
 
-            action(option);
+        //            action(option);
 
-            ContentTypeOptions = ContentTypeOptions.Union(new[] { option });
+        //            ContentTypeOptions = ContentTypeOptions.Union(new[] { option });
 
-            return this;
-        }
+        //            return this;
+        //        }
 
-        public GraphQLContentOptions ConfigurePart<TContentPart>(Action<GraphQLContentPartOption> action)
-            where TContentPart : ContentPart
-        {
-            var option = new GraphQLContentPartOption<TContentPart>();
+        //        public GraphQLContentOptions ConfigurePart<TContentPart>(Action<GraphQLContentPartOption> action)
+        //            where TContentPart : ContentPart
+        //        {
+        //            var option = new GraphQLContentPartOption<TContentPart>();
 
-            action(option);
+        //            action(option);
 
-            PartOptions = PartOptions.Union(new[] { option });
+        //            PartOptions = PartOptions.Union(new[] { option });
 
-            return this;
-        }
+        //            return this;
+        //        }
 
-        public GraphQLContentOptions ConfigurePart(string partName, Action<GraphQLContentPartOption> action)
-        {
-            var option = new GraphQLContentPartOption(partName);
+        //        public GraphQLContentOptions ConfigurePart(string partName, Action<GraphQLContentPartOption> action)
+        //        {
+        //            var option = new GraphQLContentPartOption(partName);
 
-            action(option);
+        //            action(option);
 
-            PartOptions = PartOptions.Union(new[] { option });
+        //            PartOptions = PartOptions.Union(new[] { option });
 
-            return this;
-        }
+        //            return this;
+        //        }
 
-        public GraphQLContentOptions IgnoreField<IGraphType>(string fieldName) where IGraphType : IObjectGraphType
-        {
-            HiddenFields = HiddenFields.Union(new[] {
-                new GraphQLField<IGraphType>(fieldName),
-            });
+        //        public GraphQLContentOptions IgnoreField<IGraphType>(string fieldName) where IGraphType : IObjectGraphType
+        //        {
+        //            HiddenFields = HiddenFields.Union(new[] {
+        //                new GraphQLField<IGraphType>(fieldName),
+        //            });
 
-            return this;
-        }
+        //            return this;
+        //        }
 
-        public GraphQLContentOptions IgnoreField(Type fieldType, string fieldName)
-        {
-            HiddenFields = HiddenFields.Union(new[] {
-                new GraphQLField(fieldType, fieldName),
-            });
+        //        public GraphQLContentOptions IgnoreField(Type fieldType, string fieldName)
+        //        {
+        //            HiddenFields = HiddenFields.Union(new[] {
+        //                new GraphQLField(fieldType, fieldName),
+        //            });
 
-            return this;
-        }
+        //            return this;
+        //        }
 
         /// <summary>
         /// Collapsing works at a hierarchy
@@ -78,7 +78,7 @@ namespace OrchardCore.ContentManagement.GraphQL.Options
         /// If the Content Part at a top level is marked collapsed, then it will trump above.
         /// </summary>
         /// <param name="definition"></param>
-        /// <returns></returns>
+        //        /// <returns></returns>
         internal bool ShouldCollapse(ContentTypePartDefinition definition)
         {
             if (IsCollapsedByDefault(definition))
@@ -156,11 +156,11 @@ namespace OrchardCore.ContentManagement.GraphQL.Options
             return false;
         }
 
-        internal bool ShouldSkip(Type fieldType, string fieldName)
-        {
-            return HiddenFields
-                .Any(x => x.FieldType == fieldType && x.FieldName.Equals(fieldName, StringComparison.OrdinalIgnoreCase));
-        }
+        //internal bool ShouldSkip(Type fieldType, string fieldName)
+        //{
+        //    return HiddenFields
+        //        .Any(x => x.FieldType == fieldType && x.FieldName.Equals(fieldName, StringComparison.OrdinalIgnoreCase));
+        //}
 
         public bool IsHiddenByDefault(ContentTypePartDefinition definition)
         {
