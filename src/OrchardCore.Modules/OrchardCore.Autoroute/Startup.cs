@@ -48,6 +48,8 @@ namespace OrchardCore.Autoroute
                 .UseDisplayDriver<AutoroutePartDisplay>()
                 .AddHandler<AutoroutePartHandler>();
 
+            services.AddContentPart<PageTypePart>();
+
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, AutoroutePartSettingsDisplayDriver>();
             services.AddScoped<IContentPartIndexHandler, AutoroutePartIndexHandler>();

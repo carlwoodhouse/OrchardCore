@@ -36,6 +36,10 @@ namespace OrchardCore.Autoroute
                 .CreateIndex("IDX_AutoroutePartIndex_Published", "Published")
             );
 
+            _contentDefinitionManager.AlterPartDefinition(nameof(PageTypePart), builder => builder
+    .Attachable()
+    .WithDescription("Provides a way to define custom aliases for content items."));
+
             // Return 3 to shortcut the second migration on new content definition schemas.
             return 3;
         }
