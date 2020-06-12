@@ -33,7 +33,7 @@
 //                var partName = part.Name;
 
 //                // Check if another builder has already added a field for this part.
-//                if (contentItemType.HasField(partName)) continue;
+//            //    if (contentItemType.HasField(partName)) continue;
 
 //                var activator = typeActivator.GetTypeActivator(part.PartDefinition.Name);
 

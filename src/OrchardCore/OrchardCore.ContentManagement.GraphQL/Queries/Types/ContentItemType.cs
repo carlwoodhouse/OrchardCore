@@ -1,3 +1,17 @@
+using HotChocolate.Types;
+
+namespace OrchardCore.ContentManagement.GraphQL.Queries.Types
+{
+    public class ContentItemType : ObjectType<ContentItem>
+    {
+        protected override void Configure(IObjectTypeDescriptor<ContentItem> descriptor)
+        {
+            descriptor.Implements<ContentItemInterface>();
+        }
+    }
+}
+
+
 //using System.IO;
 //using System.Text.Encodings.Web;
 //using GraphQL.Types;

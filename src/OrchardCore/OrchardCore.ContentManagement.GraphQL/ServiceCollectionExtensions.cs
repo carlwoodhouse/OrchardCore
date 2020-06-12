@@ -11,11 +11,11 @@ namespace OrchardCore.ContentManagement.GraphQL
     {
         public static IServiceCollection AddContentGraphQL(this IServiceCollection services)
         {
-            services.AddSingleton<ISchemaBuilderProvider, ContentItemProvider>();
-          //  services.AddSingleton<ISchemaBuilderProvider, ContentTypeQuery>();
-          //  services.AddSingleton<ContentItemInterface>();
+            services.AddSingleton<ISchemaBuilderProvider, ContentItemSchemaBuilderProvider>();
+            services.AddSingleton<ISchemaBuilderProvider, ContentTypeSchemaBuilderProvider>();
+            //  services.AddSingleton<ISchemaBuilderProvider, ContentTypeQuery>();
+            //  services.AddSingleton<ContentItemInterface>();
 
-         //   services.AddTransient<ContentItemType>();
 
             services.AddScoped<IPermissionProvider, Permissions>();
 
